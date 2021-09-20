@@ -8,12 +8,12 @@ function App() {
       {/* <Blogs title='JS' author= 'N Jahan'></Blogs>
       <Blogs title='React' author= 'Mitu'></Blogs> */}
       <Mobile></Mobile>
-      <GetToDo></GetToDo>
+      <LoadToDos></LoadToDos>
     </div>
   );
 }
 
-const GetToDo = () => {
+const LoadToDos = () => {
   const [toDos, setToDos]= useState([]);
   useEffect(()=> {
     fetch('https://jsonplaceholder.typicode.com/todos')
@@ -21,10 +21,10 @@ const GetToDo = () => {
     .then( data => setToDos(data))
   },[])
   return (
-    toDos.map( todo => <DisplayToDo title={todo.title} status ={todo.completed}></DisplayToDo> )
+    toDos.map( todo => <DisplayToDos title={todo.title} status ={todo.completed}></DisplayToDos> )
   );
 } 
-const DisplayToDo = (props) => {
+const DisplayToDos = (props) => {
   let isCompleted;
   if(props.status){
   isCompleted = 'true'
